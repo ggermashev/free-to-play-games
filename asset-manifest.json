@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/free-to-play-games/static/css/main.16780cf4.css",
-    "main.js": "/free-to-play-games/static/js/main.74d415a3.js",
+    "main.css": "/free-to-play-games/static/css/main.f221fc2d.css",
+    "main.js": "/free-to-play-games/static/js/main.5b64050b.js",
     "static/js/787.cda612ba.chunk.js": "/free-to-play-games/static/js/787.cda612ba.chunk.js",
     "static/media/banner_bg.png": "/free-to-play-games/static/media/banner_bg.0fddd1fbe0a5e0a0af93.png",
     "index.html": "/free-to-play-games/index.html",
-    "main.16780cf4.css.map": "/free-to-play-games/static/css/main.16780cf4.css.map",
-    "main.74d415a3.js.map": "/free-to-play-games/static/js/main.74d415a3.js.map",
+    "main.f221fc2d.css.map": "/free-to-play-games/static/css/main.f221fc2d.css.map",
+    "main.5b64050b.js.map": "/free-to-play-games/static/js/main.5b64050b.js.map",
     "787.cda612ba.chunk.js.map": "/free-to-play-games/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.16780cf4.css",
-    "static/js/main.74d415a3.js"
+    "static/css/main.f221fc2d.css",
+    "static/js/main.5b64050b.js"
   ]
 }
