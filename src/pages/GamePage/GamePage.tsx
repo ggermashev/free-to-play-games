@@ -50,42 +50,42 @@ const GamePage = () => {
                     }}/>
                     <img src={game?.thumbnail}/>
                     <h2>{game?.title}</h2>
-                    <Slides>
-                        <MainScreenshot
-                            src={`${game?.screenshots[slideNum].image || ""}`}
-                            id={'main-screenshot'}
-                            $mouseIsOver={modalIsVisible}
-                            onMouseOver={() => {
-                                setModalIsVisible(true)
+                    {/*<Slides>*/}
+                    {/*    <MainScreenshot*/}
+                    {/*        src={`${game?.screenshots[slideNum].image || ""}`}*/}
+                    {/*        id={'main-screenshot'}*/}
+                    {/*        $mouseIsOver={modalIsVisible}*/}
+                    {/*        onMouseOver={() => {*/}
+                    {/*            setModalIsVisible(true)*/}
 
-                            }}
-                            onMouseLeave={() => {
-                                setModalIsVisible(false)
-                            }}
-                        />
-                        <Gallery>
-                            <ArrowLeftIcon
-                                onClick={() => {
-                                    if (slideNum > 0) {
-                                        setSlideNum(slideNum - 1)
-                                    }
-                                }}
-                            />
-                            {game?.screenshots.slice(slideNum - 1, slideNum + 2).map((ss, i) =>
-                                <img
-                                    key={ss.id}
-                                    src={`${ss.image}`}
-                                />
-                            )}
-                            <ArrowRightIcon
-                                onClick={() => {
-                                    if (game?.screenshots && slideNum < game?.screenshots?.length) {
-                                        setSlideNum(slideNum + 1)
-                                    }
-                                }}
-                            />
-                        </Gallery>
-                    </Slides>
+                    {/*        }}*/}
+                    {/*        onMouseLeave={() => {*/}
+                    {/*            setModalIsVisible(false)*/}
+                    {/*        }}*/}
+                    {/*    />*/}
+                    {/*    <Gallery>*/}
+                    {/*        <ArrowLeftIcon*/}
+                    {/*            onClick={() => {*/}
+                    {/*                if (slideNum > 0) {*/}
+                    {/*                    setSlideNum(slideNum - 1)*/}
+                    {/*                }*/}
+                    {/*            }}*/}
+                    {/*        />*/}
+                    {/*        {game?.screenshots.slice(slideNum - 1, slideNum + 2).map((ss, i) =>*/}
+                    {/*            <img*/}
+                    {/*                key={ss.id}*/}
+                    {/*                src={`${ss.image}`}*/}
+                    {/*            />*/}
+                    {/*        )}*/}
+                    {/*        <ArrowRightIcon*/}
+                    {/*            onClick={() => {*/}
+                    {/*                if (game?.screenshots && slideNum < game?.screenshots?.length) {*/}
+                    {/*                    setSlideNum(slideNum + 1)*/}
+                    {/*                }*/}
+                    {/*            }}*/}
+                    {/*        />*/}
+                    {/*    </Gallery>*/}
+                    {/*</Slides>*/}
                 </ShortInfo>
                 <LongInfo>
                     <p>{game?.description}</p>

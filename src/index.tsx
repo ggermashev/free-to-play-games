@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <BrowserRouter basename={"/free_to_play_games"}>
+        <BrowserRouter basename={"/free-to-play-games"}>
             <Provider store={store}>
                 <App/>
             </Provider>
