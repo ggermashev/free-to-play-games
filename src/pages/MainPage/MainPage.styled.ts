@@ -78,6 +78,16 @@ const GamesContainer = styled.div`
   justify-content: center;
   gap: 1em;
   padding: 1em;
+
+  .border {
+    opacity: 0;
+    width: 100%;
+    height: 50px;
+  }
+  
+  h1 {
+    color: white;
+  }
 `
 
 export {

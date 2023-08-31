@@ -18,6 +18,16 @@ const Row = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  
+  a {
+    text-decoration: none;
+    color: white;
+    
+    &:hover {
+      color: #4799eb;
+      cursor: pointer;
+    }
+  }
 `
 
 export {FooterStyled, Row}

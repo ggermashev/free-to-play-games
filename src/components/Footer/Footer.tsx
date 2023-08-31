@@ -6,10 +6,10 @@ const Footer = () => {
         <FooterStyled>
             <p><span style={{color: '#4799eb'}}>created by</span> Григорий Гермашев</p>
             <Row>
-                <p>Telegram</p>
-                <p>GitHub</p>
-                <p>CV</p>
-                <p>Source</p>
+                <a href={'https://t.me/g_grm'} target={'_blank'}>Telegram</a>
+                <a href={'https://github.com/ggermashev?tab=repositories'} target={'_blank'}>GitHub</a>
+                <a href={'https://pyatigorsk.hh.ru/resume/e3780d9eff0bf059ae0039ed1f587a6c487079'} target={'_blank'}>CV</a>
+                <a href={'https://www.freetogame.com/'} target={'_blank'}>Source</a>
             </Row>
         </FooterStyled>
     );

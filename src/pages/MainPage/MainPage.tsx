@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../store/store";
 import {getGames} from "../../api/api";
 import {setGames} from "../../store/GamesStore";
@@ -13,25 +13,59 @@ import {
 import GameCard from "../../components/GameCard/GameCard";
 import {IGame} from "../../types/types";
 import Button from "../../ui/Button/Button";
+import Loader from "../../ui/Loader/Loader";
 
 const MainPage = () => {
 
     const games = useAppSelector(state => state.games).games
+    const [visibleGames, setVisibleGames] = useState<IGame[]>()
     const filters = useAppSelector(state => state.filters)
     const dispatch = useAppDispatch()
 
-    const [visibleGames, setVisibleGames] = useState<IGame[]>([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-
-        getGames({genre: filters.genre, platform: filters.platform, sortBy: filters.sortBy}).then(games => {
-            dispatch(setGames(games))
-            setVisibleGames(games.slice(0, 12))
-        })
+        setIsLoading(true)
+        getGames({genre: filters.genre, platform: filters.platform, sortBy: filters.sortBy}).then(
+            games => {
+                dispatch(setGames(games))
+                setVisibleGames(games?.slice(0, 12))
+                setIsLoading(false)
+            },
+            err => {
+                console.log(err)
+                setIsLoading(false)
+            })
 
         return () => {
         }
     }, [filters.genre, filters.platform, filters.sortBy])
+
+    const onVisible = useCallback((isVisible: boolean) => {
+        if (isVisible) {
+            setIsLoading(true)
+            if (visibleGames) {
+                setVisibleGames([...visibleGames, ...games?.slice(visibleGames.length, visibleGames.length + 12)])
+            }
+            setIsLoading(false)
+        }
+    }, [visibleGames])
+
+    useEffect(() => {
+        let options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 1,
+        };
+        let observer = new IntersectionObserver(entry => {
+            onVisible(entry[0].isIntersecting)
+        }, options);
+        observer.observe(document.querySelector(`#border`) as Element)
+
+        return () => {
+            observer.disconnect()
+        }
+    }, [visibleGames])
 
     return (
         <MainPageStyled>
@@ -52,12 +86,26 @@ const MainPage = () => {
                     <Button onClick={() => {
                         const cpGames = [...games]
                         dispatch(setGames(cpGames.reverse()))
-                        setVisibleGames(cpGames.slice(0, 12))
+                        setVisibleGames(games.slice(0, 12))
                     }}>Перевернуть</Button>
                 </Row>
             </ChosenFilters>
             <GamesContainer>
-                {visibleGames.map(game => <GameCard key={game.id} game={game}/>)}
+                {isLoading
+                    ? <Loader size={'large'}/>
+                    : <>
+                        {visibleGames
+                            ?
+                            <>
+                                {visibleGames.map(game => <GameCard key={game.id} game={game}/>)}
+                            </>
+                            : <h1 style={{textAlign: 'center'}}>Не удалось получить данные :(</h1>
+                        }
+                    </>
+                }
+                <div id={"border"} className={'border'}>
+
+                </div>
             </GamesContainer>
         </MainPageStyled>
     );
