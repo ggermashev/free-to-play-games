@@ -84,9 +84,9 @@ const MainPage = () => {
                     <p><span style={{color: '#4799eb'}}>Жанр: </span>{filters.genre}</p>
                     <p><span style={{color: '#4799eb'}}>Сортировать по: </span>{filters.sortBy}</p>
                     <Button onClick={() => {
-                        const cpGames = [...games]
-                        dispatch(setGames(cpGames.reverse()))
-                        setVisibleGames(games.slice(0, 12))
+                        const cpGames = [...games].reverse()
+                        dispatch(setGames(cpGames))
+                        setVisibleGames(cpGames.slice(0,12))
                     }}>Перевернуть</Button>
                 </Row>
             </ChosenFilters>

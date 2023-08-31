@@ -38,7 +38,9 @@ const GamePage = () => {
             }
             const cache_game = cache_games.filter((cache: { data: IGame, time: number }) => params.game_id && cache.data?.id === +params.game_id)[0]
             if (cache_game) {
-                setGame(cache_game)
+                setGame(cache_game.data)
+                const ind = cache_games.findIndex((cache: {data: IGame, time: number}) => cache.time === cache_game.time)
+                cache_games[ind].time = Date.now()
                 setIsLoading(false)
             } else {
                 getGame(+params.game_id).then(
@@ -59,7 +61,7 @@ const GamePage = () => {
         }
     }, [])
 
-    const [slideNum, setSlideNum] = useState(1)
+    const [slideNum, setSlideNum] = useState(0)
 
     const [modalIsVisible, setModalIsVisible] = useState(false)
 
@@ -105,7 +107,7 @@ const GamePage = () => {
                                                             key={ss.id}
                                                             src={`${ss.image}`}
                                                             className={'slide'}
-                                                            style={{border: i === 1 ? '1px solid #4799eb' : 'none'}}
+                                                            style={{border: i === 1 && slideNum !== 0 ? '1px solid #4799eb' : (i === slideNum ? '1px solid #4799eb' : 'none')}}
                                                         />
                                                     )}
                                                     <ArrowRightIcon

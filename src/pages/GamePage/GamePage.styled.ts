@@ -205,7 +205,7 @@ const Gallery = styled.div`
 
   img.slide {
     height: auto;
-    width: 100px;
+    width: 70px;
   }
 
   svg {
